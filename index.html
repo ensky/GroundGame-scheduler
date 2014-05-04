@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>大地遊戲組合產生器</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">大地遊戲組合產生器</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <div id="main" class="container">
+        <div class="hero-unit">
+            <h1>大地遊戲組合產生器！</h1>
+                <p>還在為安排大地遊戲的組合感到困擾嗎？</p>
+                <p>快來試試這個產生器！</p>
+                <p>只要輸入參數，輕而易舉就可以產生出對戰組合:D</p>
+            </p>
+        </div>
+        <div id="alert" style="display:none;" class="alert">
+            <button class="close" data-dismiss="alert">×</button>
+            <span id="alert-text"></span>
+        </div>
+        <form id="form" class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label" for="input-team">隊伍數量</label>
+            <div class="controls">
+              <input type="number" name="team" id="input-team" placeholder="隊伍數量" value="12">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="input-check">關卡數量</label>
+            <div class="controls">
+              <input type="number" name="check" id="input-check" placeholder="關卡數量" value="8">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="input-round">要跑幾關</label>
+            <div class="controls">
+              <input type="number" name="round" id="input-round" placeholder="要跑幾關" value="6">
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <button id="loading-button" type="submit" class="btn btn-success" data-loading-text="計算中..." data-complete-text="重新計算！">開始計算！</button>
+            </div>
+          </div>
+        </form>
+        <hr />
+        <div id="result"><!-- style="display:none"-->
+            <h2>結果</h2>
+            <table id="result-table" class="table table-striped"></table>
+        </div>
+    </div> <!-- /container -->
+    
+  <footer>
+    <p>Author: <a target="_blank" href="http://www.ensky.tw">Ensky</a>, <a target="_blank" href="https://www.facebook.com/hongwei.qiu">HwChiu</a></p>
+    <p>&copy; All Right Reserved 2012</p>
+  </footer>
+  
+  <script id="t-result-table" type="text/template">
+        <thead>
+            <tr>
+                <th>關卡＼回合</th>
+                <% _.each(_.range(1, rounds+1), function (round) { %>
+                <th><%= round %></th>
+                <% }) %>
+            </tr>
+        </thead>
+        <tbody>
+            <% _.each(_.range(1, checks+1), function (check) { %>
+            <tr>
+                <th><%= check %></th>
+                <% _.each(_.range(1, rounds+1), function (round) { %>
+                    <td>
+                        <span class="teamA"><%= data[round][check][0] %></span>
+                        <span class="teamB"><%= data[round][check][1] %></span>
+                    </td>
+                <% }) %>
+            </tr>
+            <% }) %>
+        </tbody>
+  </script>
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script src="//underscorejs.org/underscore-min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.0.min.js"><\/script>')</script>
+  <script>window._ || document.write('<script src="js/libs/underscore.min.js"><\/script>')</script>
+
+  <!-- scripts concatenated and minified via build script -->
+  <script src="js/libs/bootstrap.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+  <!-- end scripts -->
+</body>
+</html>
