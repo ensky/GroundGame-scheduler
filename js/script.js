@@ -14,10 +14,11 @@ $(function () {
 				check: form.find('[name="check"]').val(),
 				round: form.find('[name="round"]').val()
 			};
-		var worker = new Worker('js/round.js');
+		var worker = new Worker('js/round-c.js');
 		worker.onmessage = function (oEvent) {
 			var result = JSON.parse(oEvent.data);
 			if (result[0] === true) {
+				console.log(result[1]);
 				$rt.html(template({
 					rounds: parseInt(conf.round),
 					checks: parseInt(conf.check),
