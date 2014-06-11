@@ -20,7 +20,7 @@ var Round = function (conf) {
     
     maxTeam = levelCount * 2; //maxTeam的數量就是關卡數量的兩倍， 如果這個值比隊伍數量大，那後面的bit就是空白隊伍，如果此值等於隊伍數量，代表沒有空白隊伍
     var i;
-    if( (teamCount&1) || ( (maxTeam/2) < playTimes) ||  (teamCount > maxTeam) ){
+    if( (teamCount&1) || ( (maxTeam/2) < playTimes) ||  (teamCount > maxTeam) || (teamCount <= playTimes) ){
         postResult(false);
     } else {
         initArray(map, levelCount, playTimes, 0)
