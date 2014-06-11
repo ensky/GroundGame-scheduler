@@ -83,8 +83,7 @@ void showAns(){
 	}
 }
 
-
-// 簫p繙璽瞻@簫32-bit穠繙翹礎r礎糧織X簫弎it竅O1
+// 計算一個32-bit的數字有幾個bit是1
 int numberOfOne(int x){
 	int count = 0;
 	while(x>0){
