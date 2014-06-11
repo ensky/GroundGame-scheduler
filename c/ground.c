@@ -83,8 +83,7 @@ void showAns(){
 	}
 }
 
-
-// 簫p繙璽瞻@簫32-bit穠繙翹礎r礎糧織X簫弎it竅O1
+// 計算一個32-bit的數字有幾個bit是1
 int numberOfOne(int x){
 	int count = 0;
 	while(x>0){
@@ -216,7 +215,7 @@ int main(int argv,char** argc){
 	levelCount = strtol(argc[2],NULL,10);
 	playTimes = strtol(argc[3],NULL,10);
 	maxTeam = levelCount * 2; //maxTeam的數量就是關卡數量的兩倍， 如果這個值比隊伍數量大，那後面的bit就是空白隊伍，如果此值等於隊伍數量，代表沒有空白隊伍
-	if( (teamCount&1) || ( (maxTeam/2) < playTimes) ||  (teamCount > maxTeam) ){
+	if( (teamCount&1) || ( (maxTeam/2) < playTimes) ||  (teamCount > maxTeam) || (teamCount <= playTimes)){
 		fprintf(stderr,"No solution!!\n");
 		exit(1);
 	}
